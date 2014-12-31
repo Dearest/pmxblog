@@ -1,0 +1,266 @@
+Root WebApplicationContext: initialization started
+Refreshing Root WebApplicationContext: startup date [Wed Dec 31 16:03:04 CST 2014]; root of context hierarchy
+Loading XML bean definitions from URL [file:/E:/ZhouJiaChen/Code/pmxBlog/target/classes/config/springmvc-bean.xml]
+Loading XML bean definitions from URL [file:/E:/ZhouJiaChen/Code/pmxBlog/target/classes/config/springmvc-hibernate.xml]
+{dataSource-1} inited
+HCANN000001: Hibernate Commons Annotations {4.0.4.Final}
+HHH000412: Hibernate Core {4.3.5.Final}
+HHH000206: hibernate.properties not found
+HHH000021: Bytecode provider name : javassist
+HHH000400: Using dialect: org.hibernate.dialect.MySQLDialect
+HHH000399: Using default transaction strategy (direct JDBC transactions)
+HHH000397: Using ASTQueryTranslatorFactory
+HHH000229: Running schema validator
+HHH000102: Fetching database metadata
+Using DataSource [{
+	CreateTime:"2014-12-31 16:03:05",
+	ActiveCount:0,
+	PoolingCount:1,
+	CreateCount:1,
+	DestroyCount:0,
+	CloseCount:2,
+	ConnectCount:2,
+	Connections:[
+		{ID:472243295, ConnectTime:"2014-12-31 16:03:05", UseCount:2, LastActiveTime:"2014-12-31 16:03:06"}
+	]
+}
+
+[
+	{
+	ID:472243295, 
+	poolStatements:[
+		]
+	}
+]] of Hibernate SessionFactory for HibernateTransactionManager
+Root WebApplicationContext: initialization completed in 2105 ms
+FrameworkServlet 'springDispatcher': initialization started
+Refreshing WebApplicationContext for namespace 'springDispatcher-servlet': startup date [Wed Dec 31 16:03:06 CST 2014]; parent: Root WebApplicationContext
+Loading XML bean definitions from URL [file:/E:/ZhouJiaChen/Code/pmxBlog/target/classes/config/springmvc-config.xml]
+JSR-330 'javax.inject.Inject' annotation found and supported for autowiring
+Mapped URL path [/js/**] onto handler 'org.springframework.web.servlet.resource.ResourceHttpRequestHandler#0'
+Mapped URL path [/css/**] onto handler 'org.springframework.web.servlet.resource.ResourceHttpRequestHandler#1'
+Mapped URL path [/img/**] onto handler 'org.springframework.web.servlet.resource.ResourceHttpRequestHandler#2'
+Mapped URL path [/font/**] onto handler 'org.springframework.web.servlet.resource.ResourceHttpRequestHandler#3'
+Mapped URL path [/fonts/**] onto handler 'org.springframework.web.servlet.resource.ResourceHttpRequestHandler#4'
+Mapped URL path [/picture/**] onto handler 'org.springframework.web.servlet.resource.ResourceHttpRequestHandler#5'
+Mapped URL path [/video/**] onto handler 'org.springframework.web.servlet.resource.ResourceHttpRequestHandler#6'
+Mapped URL path [/ueditor/**] onto handler 'org.springframework.web.servlet.resource.ResourceHttpRequestHandler#7'
+Mapped URL path [/news/**] onto handler 'org.springframework.web.servlet.resource.ResourceHttpRequestHandler#8'
+Looking for @ControllerAdvice: WebApplicationContext for namespace 'springDispatcher-servlet': startup date [Wed Dec 31 16:03:06 CST 2014]; parent: Root WebApplicationContext
+Looking for @ControllerAdvice: WebApplicationContext for namespace 'springDispatcher-servlet': startup date [Wed Dec 31 16:03:06 CST 2014]; parent: Root WebApplicationContext
+ClassTemplateLoader for Spring macros added to FreeMarker configuration
+FrameworkServlet 'springDispatcher': initialization completed in 748 ms
+Root WebApplicationContext: initialization started
+Refreshing Root WebApplicationContext: startup date [Wed Dec 31 16:04:22 CST 2014]; root of context hierarchy
+Loading XML bean definitions from URL [file:/E:/ZhouJiaChen/Code/pmxBlog/target/classes/config/springmvc-bean.xml]
+Loading XML bean definitions from URL [file:/E:/ZhouJiaChen/Code/pmxBlog/target/classes/config/springmvc-hibernate.xml]
+{dataSource-1} inited
+HCANN000001: Hibernate Commons Annotations {4.0.4.Final}
+HHH000412: Hibernate Core {4.3.5.Final}
+HHH000206: hibernate.properties not found
+HHH000021: Bytecode provider name : javassist
+HHH000400: Using dialect: org.hibernate.dialect.MySQLDialect
+HHH000399: Using default transaction strategy (direct JDBC transactions)
+HHH000397: Using ASTQueryTranslatorFactory
+HHH000229: Running schema validator
+HHH000102: Fetching database metadata
+Using DataSource [{
+	CreateTime:"2014-12-31 16:04:23",
+	ActiveCount:0,
+	PoolingCount:1,
+	CreateCount:1,
+	DestroyCount:0,
+	CloseCount:2,
+	ConnectCount:2,
+	Connections:[
+		{ID:68415562, ConnectTime:"2014-12-31 16:04:23", UseCount:2, LastActiveTime:"2014-12-31 16:04:24"}
+	]
+}
+
+[
+	{
+	ID:68415562, 
+	poolStatements:[
+		]
+	}
+]] of Hibernate SessionFactory for HibernateTransactionManager
+Root WebApplicationContext: initialization completed in 1177 ms
+FrameworkServlet 'springDispatcher': initialization started
+Refreshing WebApplicationContext for namespace 'springDispatcher-servlet': startup date [Wed Dec 31 16:04:24 CST 2014]; parent: Root WebApplicationContext
+Loading XML bean definitions from URL [file:/E:/ZhouJiaChen/Code/pmxBlog/target/classes/config/springmvc-config.xml]
+JSR-330 'javax.inject.Inject' annotation found and supported for autowiring
+Mapped URL path [/js/**] onto handler 'org.springframework.web.servlet.resource.ResourceHttpRequestHandler#0'
+Mapped URL path [/css/**] onto handler 'org.springframework.web.servlet.resource.ResourceHttpRequestHandler#1'
+Mapped URL path [/img/**] onto handler 'org.springframework.web.servlet.resource.ResourceHttpRequestHandler#2'
+Mapped URL path [/font/**] onto handler 'org.springframework.web.servlet.resource.ResourceHttpRequestHandler#3'
+Mapped URL path [/fonts/**] onto handler 'org.springframework.web.servlet.resource.ResourceHttpRequestHandler#4'
+Mapped URL path [/picture/**] onto handler 'org.springframework.web.servlet.resource.ResourceHttpRequestHandler#5'
+Mapped URL path [/video/**] onto handler 'org.springframework.web.servlet.resource.ResourceHttpRequestHandler#6'
+Mapped URL path [/ueditor/**] onto handler 'org.springframework.web.servlet.resource.ResourceHttpRequestHandler#7'
+Mapped URL path [/news/**] onto handler 'org.springframework.web.servlet.resource.ResourceHttpRequestHandler#8'
+Looking for @ControllerAdvice: WebApplicationContext for namespace 'springDispatcher-servlet': startup date [Wed Dec 31 16:04:24 CST 2014]; parent: Root WebApplicationContext
+Looking for @ControllerAdvice: WebApplicationContext for namespace 'springDispatcher-servlet': startup date [Wed Dec 31 16:04:24 CST 2014]; parent: Root WebApplicationContext
+ClassTemplateLoader for Spring macros added to FreeMarker configuration
+FrameworkServlet 'springDispatcher': initialization completed in 542 ms
+Root WebApplicationContext: initialization started
+Refreshing Root WebApplicationContext: startup date [Wed Dec 31 16:04:48 CST 2014]; root of context hierarchy
+Loading XML bean definitions from URL [file:/E:/ZhouJiaChen/Code/pmxBlog/target/classes/config/springmvc-bean.xml]
+Loading XML bean definitions from URL [file:/E:/ZhouJiaChen/Code/pmxBlog/target/classes/config/springmvc-hibernate.xml]
+{dataSource-1} inited
+HCANN000001: Hibernate Commons Annotations {4.0.4.Final}
+HHH000412: Hibernate Core {4.3.5.Final}
+HHH000206: hibernate.properties not found
+HHH000021: Bytecode provider name : javassist
+HHH000400: Using dialect: org.hibernate.dialect.MySQLDialect
+HHH000399: Using default transaction strategy (direct JDBC transactions)
+HHH000397: Using ASTQueryTranslatorFactory
+HHH000229: Running schema validator
+HHH000102: Fetching database metadata
+Using DataSource [{
+	CreateTime:"2014-12-31 16:04:49",
+	ActiveCount:0,
+	PoolingCount:1,
+	CreateCount:1,
+	DestroyCount:0,
+	CloseCount:2,
+	ConnectCount:2,
+	Connections:[
+		{ID:68415562, ConnectTime:"2014-12-31 16:04:49", UseCount:2, LastActiveTime:"2014-12-31 16:04:49"}
+	]
+}
+
+[
+	{
+	ID:68415562, 
+	poolStatements:[
+		]
+	}
+]] of Hibernate SessionFactory for HibernateTransactionManager
+Root WebApplicationContext: initialization completed in 1152 ms
+FrameworkServlet 'springDispatcher': initialization started
+Refreshing WebApplicationContext for namespace 'springDispatcher-servlet': startup date [Wed Dec 31 16:04:49 CST 2014]; parent: Root WebApplicationContext
+Loading XML bean definitions from URL [file:/E:/ZhouJiaChen/Code/pmxBlog/target/classes/config/springmvc-config.xml]
+JSR-330 'javax.inject.Inject' annotation found and supported for autowiring
+Mapped URL path [/js/**] onto handler 'org.springframework.web.servlet.resource.ResourceHttpRequestHandler#0'
+Mapped URL path [/css/**] onto handler 'org.springframework.web.servlet.resource.ResourceHttpRequestHandler#1'
+Mapped URL path [/img/**] onto handler 'org.springframework.web.servlet.resource.ResourceHttpRequestHandler#2'
+Mapped URL path [/font/**] onto handler 'org.springframework.web.servlet.resource.ResourceHttpRequestHandler#3'
+Mapped URL path [/fonts/**] onto handler 'org.springframework.web.servlet.resource.ResourceHttpRequestHandler#4'
+Mapped URL path [/picture/**] onto handler 'org.springframework.web.servlet.resource.ResourceHttpRequestHandler#5'
+Mapped URL path [/video/**] onto handler 'org.springframework.web.servlet.resource.ResourceHttpRequestHandler#6'
+Mapped URL path [/ueditor/**] onto handler 'org.springframework.web.servlet.resource.ResourceHttpRequestHandler#7'
+Mapped URL path [/news/**] onto handler 'org.springframework.web.servlet.resource.ResourceHttpRequestHandler#8'
+Mapped "{[/blog],methods=[],params=[],headers=[],consumes=[],produces=[],custom=[]}" onto public java.lang.String com.iotu.pmx.controller.BlogController.test()
+Mapped "{[/],methods=[],params=[],headers=[],consumes=[],produces=[],custom=[]}" onto public java.lang.String com.iotu.pmx.controller.BlogController.mainPage()
+Looking for @ControllerAdvice: WebApplicationContext for namespace 'springDispatcher-servlet': startup date [Wed Dec 31 16:04:49 CST 2014]; parent: Root WebApplicationContext
+Looking for @ControllerAdvice: WebApplicationContext for namespace 'springDispatcher-servlet': startup date [Wed Dec 31 16:04:49 CST 2014]; parent: Root WebApplicationContext
+ClassTemplateLoader for Spring macros added to FreeMarker configuration
+FrameworkServlet 'springDispatcher': initialization completed in 573 ms
+Root WebApplicationContext: initialization started
+Refreshing Root WebApplicationContext: startup date [Wed Dec 31 16:06:11 CST 2014]; root of context hierarchy
+Loading XML bean definitions from URL [file:/E:/ZhouJiaChen/Code/pmxBlog/target/classes/config/springmvc-bean.xml]
+Loading XML bean definitions from URL [file:/E:/ZhouJiaChen/Code/pmxBlog/target/classes/config/springmvc-hibernate.xml]
+{dataSource-1} inited
+HCANN000001: Hibernate Commons Annotations {4.0.4.Final}
+HHH000412: Hibernate Core {4.3.5.Final}
+HHH000206: hibernate.properties not found
+HHH000021: Bytecode provider name : javassist
+HHH000400: Using dialect: org.hibernate.dialect.MySQLDialect
+HHH000399: Using default transaction strategy (direct JDBC transactions)
+HHH000397: Using ASTQueryTranslatorFactory
+HHH000229: Running schema validator
+HHH000102: Fetching database metadata
+Using DataSource [{
+	CreateTime:"2014-12-31 16:06:11",
+	ActiveCount:0,
+	PoolingCount:1,
+	CreateCount:1,
+	DestroyCount:0,
+	CloseCount:2,
+	ConnectCount:2,
+	Connections:[
+		{ID:847663700, ConnectTime:"2014-12-31 16:06:12", UseCount:2, LastActiveTime:"2014-12-31 16:06:12"}
+	]
+}
+
+[
+	{
+	ID:847663700, 
+	poolStatements:[
+		]
+	}
+]] of Hibernate SessionFactory for HibernateTransactionManager
+Root WebApplicationContext: initialization completed in 1165 ms
+FrameworkServlet 'springDispatcher': initialization started
+Refreshing WebApplicationContext for namespace 'springDispatcher-servlet': startup date [Wed Dec 31 16:06:12 CST 2014]; parent: Root WebApplicationContext
+Loading XML bean definitions from URL [file:/E:/ZhouJiaChen/Code/pmxBlog/target/classes/config/springmvc-config.xml]
+JSR-330 'javax.inject.Inject' annotation found and supported for autowiring
+Mapped URL path [/js/**] onto handler 'org.springframework.web.servlet.resource.ResourceHttpRequestHandler#0'
+Mapped URL path [/css/**] onto handler 'org.springframework.web.servlet.resource.ResourceHttpRequestHandler#1'
+Mapped URL path [/img/**] onto handler 'org.springframework.web.servlet.resource.ResourceHttpRequestHandler#2'
+Mapped URL path [/font/**] onto handler 'org.springframework.web.servlet.resource.ResourceHttpRequestHandler#3'
+Mapped URL path [/fonts/**] onto handler 'org.springframework.web.servlet.resource.ResourceHttpRequestHandler#4'
+Mapped URL path [/picture/**] onto handler 'org.springframework.web.servlet.resource.ResourceHttpRequestHandler#5'
+Mapped URL path [/video/**] onto handler 'org.springframework.web.servlet.resource.ResourceHttpRequestHandler#6'
+Mapped URL path [/ueditor/**] onto handler 'org.springframework.web.servlet.resource.ResourceHttpRequestHandler#7'
+Mapped URL path [/news/**] onto handler 'org.springframework.web.servlet.resource.ResourceHttpRequestHandler#8'
+Mapped "{[/blog],methods=[],params=[],headers=[],consumes=[],produces=[],custom=[]}" onto public java.lang.String com.iotu.pmx.controller.BlogController.test()
+Mapped "{[/],methods=[],params=[],headers=[],consumes=[],produces=[],custom=[]}" onto public java.lang.String com.iotu.pmx.controller.BlogController.mainPage()
+Looking for @ControllerAdvice: WebApplicationContext for namespace 'springDispatcher-servlet': startup date [Wed Dec 31 16:06:12 CST 2014]; parent: Root WebApplicationContext
+Looking for @ControllerAdvice: WebApplicationContext for namespace 'springDispatcher-servlet': startup date [Wed Dec 31 16:06:12 CST 2014]; parent: Root WebApplicationContext
+ClassTemplateLoader for Spring macros added to FreeMarker configuration
+FrameworkServlet 'springDispatcher': initialization completed in 572 ms
+Root WebApplicationContext: initialization started
+Refreshing Root WebApplicationContext: startup date [Wed Dec 31 16:06:53 CST 2014]; root of context hierarchy
+Loading XML bean definitions from URL [file:/E:/ZhouJiaChen/Code/pmxBlog/target/classes/config/springmvc-bean.xml]
+Loading XML bean definitions from URL [file:/E:/ZhouJiaChen/Code/pmxBlog/target/classes/config/springmvc-hibernate.xml]
+{dataSource-1} inited
+HCANN000001: Hibernate Commons Annotations {4.0.4.Final}
+HHH000412: Hibernate Core {4.3.5.Final}
+HHH000206: hibernate.properties not found
+HHH000021: Bytecode provider name : javassist
+HHH000400: Using dialect: org.hibernate.dialect.MySQLDialect
+HHH000399: Using default transaction strategy (direct JDBC transactions)
+HHH000397: Using ASTQueryTranslatorFactory
+HHH000229: Running schema validator
+HHH000102: Fetching database metadata
+Using DataSource [{
+	CreateTime:"2014-12-31 16:06:53",
+	ActiveCount:0,
+	PoolingCount:1,
+	CreateCount:1,
+	DestroyCount:0,
+	CloseCount:2,
+	ConnectCount:2,
+	Connections:[
+		{ID:2067470517, ConnectTime:"2014-12-31 16:06:53", UseCount:2, LastActiveTime:"2014-12-31 16:06:54"}
+	]
+}
+
+[
+	{
+	ID:2067470517, 
+	poolStatements:[
+		]
+	}
+]] of Hibernate SessionFactory for HibernateTransactionManager
+Root WebApplicationContext: initialization completed in 1136 ms
+FrameworkServlet 'springDispatcher': initialization started
+Refreshing WebApplicationContext for namespace 'springDispatcher-servlet': startup date [Wed Dec 31 16:06:54 CST 2014]; parent: Root WebApplicationContext
+Loading XML bean definitions from URL [file:/E:/ZhouJiaChen/Code/pmxBlog/target/classes/config/springmvc-config.xml]
+JSR-330 'javax.inject.Inject' annotation found and supported for autowiring
+Mapped URL path [/js/**] onto handler 'org.springframework.web.servlet.resource.ResourceHttpRequestHandler#0'
+Mapped URL path [/css/**] onto handler 'org.springframework.web.servlet.resource.ResourceHttpRequestHandler#1'
+Mapped URL path [/img/**] onto handler 'org.springframework.web.servlet.resource.ResourceHttpRequestHandler#2'
+Mapped URL path [/font/**] onto handler 'org.springframework.web.servlet.resource.ResourceHttpRequestHandler#3'
+Mapped URL path [/fonts/**] onto handler 'org.springframework.web.servlet.resource.ResourceHttpRequestHandler#4'
+Mapped URL path [/picture/**] onto handler 'org.springframework.web.servlet.resource.ResourceHttpRequestHandler#5'
+Mapped URL path [/video/**] onto handler 'org.springframework.web.servlet.resource.ResourceHttpRequestHandler#6'
+Mapped URL path [/ueditor/**] onto handler 'org.springframework.web.servlet.resource.ResourceHttpRequestHandler#7'
+Mapped URL path [/news/**] onto handler 'org.springframework.web.servlet.resource.ResourceHttpRequestHandler#8'
+Mapped "{[/blog],methods=[],params=[],headers=[],consumes=[],produces=[],custom=[]}" onto public java.lang.String com.iotu.pmx.controller.BlogController.test()
+Mapped "{[/],methods=[],params=[],headers=[],consumes=[],produces=[],custom=[]}" onto public java.lang.String com.iotu.pmx.controller.BlogController.mainPage()
+Looking for @ControllerAdvice: WebApplicationContext for namespace 'springDispatcher-servlet': startup date [Wed Dec 31 16:06:54 CST 2014]; parent: Root WebApplicationContext
+Looking for @ControllerAdvice: WebApplicationContext for namespace 'springDispatcher-servlet': startup date [Wed Dec 31 16:06:54 CST 2014]; parent: Root WebApplicationContext
+ClassTemplateLoader for Spring macros added to FreeMarker configuration
+FrameworkServlet 'springDispatcher': initialization completed in 577 ms

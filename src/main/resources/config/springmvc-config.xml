@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="GBK"?>
+<beans xmlns="http://www.springframework.org/schema/beans"  
+ xmlns:context="http://www.springframework.org/schema/context"  
+ xmlns:p="http://www.springframework.org/schema/p"  
+ xmlns:mvc="http://www.springframework.org/schema/mvc"  
+ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"  
+ xsi:schemaLocation="http://www.springframework.org/schema/beans  
+      http://www.springframework.org/schema/beans/spring-beans-3.0.xsd  
+      http://www.springframework.org/schema/context  
+      http://www.springframework.org/schema/context/spring-context.xsd  
+      http://www.springframework.org/schema/mvc  
+      http://www.springframework.org/schema/mvc/spring-mvc-3.0.xsd">
+	<!-- 注解支持 -->
+	<context:annotation-config />
+	
+	<!-- 启动组件扫描，排除@Controller组件，该组件由SpringMVC配置文件扫描 -->
+	<context:component-scan base-package="com.iotu.pmx.controller">
+		<context:exclude-filter type="annotation"
+			expression="org.springframework.stereotype.Controller" />
+	</context:component-scan>
+	      
+    <!-- 注解扫描包 -->
+	<context:component-scan base-package="com.iotu.pmx.controller" />  
+    <!-- 前台静态资源定义 -->
+	<mvc:resources mapping="/js/**" location="/WEB-INF/templates/js/"/>  
+    <mvc:resources mapping="/css/**" location="/WEB-INF/templates/css/"/>  
+    <mvc:resources mapping="/img/**" location="/WEB-INF/templates/img/"/>
+    <mvc:resources mapping="/font/**" location="/WEB-INF/templates/font/"/>
+    <mvc:resources mapping="/fonts/**" location="/WEB-INF/templates/fonts/"/>
+    <mvc:resources mapping="/picture/**" location="/WEB-INF/templates/picture/"/>  
+    <mvc:resources mapping="/video/**" location="/WEB-INF/templates/video/"/>
+    <mvc:resources mapping="/ueditor/**" location="/ueditor/"/>  
+    <mvc:resources mapping="/news/**" location="/news/"/>  
+    
+
+
+	
+	<!-- 开启注解 -->
+	<mvc:annotation-driven/>
+	
+	<!-- 拦截器 拦截所有进入后台管理页面的URL 验证身份 
+	 <mvc:interceptors>
+		<mvc:interceptor>
+		<mvc:mapping path="/manager/**"/>
+		<bean class="com.cuit.weltocd.intercept.IdentityIntercept"/>
+		</mvc:interceptor>
+	</mvc:interceptors> 
+	-->	
+
+<!-- freemarker的配置 -->  
+    <bean id="freemarkerConfig"  
+        class="org.springframework.web.servlet.view.freemarker.FreeMarkerConfigurer">  
+        <property name="templateLoaderPath" value="/WEB-INF/templates/"/>  
+        <property name="defaultEncoding" value="utf-8" />  
+        <property name="freemarkerSettings">  
+            <props>  
+                <prop key="template_update_delay">10</prop>  
+                <prop key="datetime_format">yyyy-MM-dd HH:mm:ss</prop>  
+                <prop key="date_format">yyyy-MM-dd</prop>
+                <prop key="auto_import">spring.ftl as s</prop>  
+                <prop key="number_format">#</prop>              
+            </props>  
+        </property>  
+    </bean>  
+    <!-- FreeMarker视图解析,在这里配置后缀名ftl和视图解析器。。 -->  
+    <bean id="viewResolver"  
+        class="org.springframework.web.servlet.view.freemarker.FreeMarkerViewResolver">  
+        <property name="viewClass"  
+            value="org.springframework.web.servlet.view.freemarker.FreeMarkerView" />  
+        <property name="suffix" value=".html" />  
+        <property name="contentType" value="text/html; charset=UTF-8"/> 
+        <property name="exposeRequestAttributes" value="true" />  
+        <property name="exposeSessionAttributes" value="true" />  
+        <property name="exposeSpringMacroHelpers" value="true" />
+        <property name="requestContextAttribute" value="rc"/> 
+    </bean>  
+
+
+	<bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+		  <property name="defaultEncoding" value="utf-8" />
+	      <property name="maxUploadSize" value="20000000" />
+	      <property name="maxInMemorySize" value="4096" />
+	</bean>
+    	
+</beans>
