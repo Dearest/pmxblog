@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="com.iotu.pmx.model">
+    <class name="User" table="user" catalog="blog">
+        <id name="userId" type="java.lang.Integer">
+            <column name="userId" />
+            <generator class="native" />
+        </id>
+        <property name="name" type="java.lang.String">
+            <column name="name" length="45" not-null="true" />
+        </property>
+        <property name="password" type="java.lang.String">
+            <column name="password" length="300" not-null="true" />
+        </property>
+        <property name="salt" type="java.lang.String">
+            <column name="salt" length="300" not-null="true" />
+        </property>
+        <property name="role" type="java.lang.String">
+            <column name="role" length="45" not-null="true">
+                <comment>admin group</comment>
+            </column>
+        </property>
+        <set name="pictures" inverse="true">
+            <key>
+                <column name="user_userId" not-null="true" />
+            </key>
+            <one-to-many class="Picture" />
+        </set>
+        <set name="articles" inverse="true">
+            <key>
+                <column name="user_userId" not-null="true" />
+            </key>
+            <one-to-many class="Article" />
+        </set>
+    </class>
+</hibernate-mapping>

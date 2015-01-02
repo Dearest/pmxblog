@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="com.iotu.pmx.model">
+    <class name="Article" table="article" catalog="blog">
+        <id name="articleId" type="java.lang.Integer">
+            <column name="articleId" />
+            <generator class="native" />
+        </id>
+        <many-to-one name="user" class="User" fetch="select">
+            <column name="user_userId" not-null="true" />
+        </many-to-one>
+        <property name="title" type="java.lang.String">
+            <column name="title" length="200" not-null="true" />
+        </property>
+        <property name="content" type="java.lang.String">
+            <column name="content" length="16777215" not-null="true" />
+        </property>
+        <property name="summary" type="java.lang.String">
+            <column name="summary" length="200" not-null="true" />
+        </property>
+        <property name="time" type="java.sql.Timestamp">
+            <column name="time" length="19" not-null="true" />
+        </property>
+        <property name="star" type="java.lang.Integer">
+            <column name="star" not-null="true" />
+        </property>
+        <set name="comments" inverse="true">
+            <key>
+                <column name="article_articleId" />
+            </key>
+            <one-to-many class="Comment" />
+        </set>
+    </class>
+</hibernate-mapping>

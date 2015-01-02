@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="com.iotu.pmx.model">
+    <class name="Picture" table="picture" catalog="blog">
+        <id name="pictureId" type="java.lang.Integer">
+            <column name="pictureId" />
+            <generator class="native" />
+        </id>
+        <many-to-one name="user" class="User" fetch="select">
+            <column name="user_userId" not-null="true" />
+        </many-to-one>
+        <property name="title" type="java.lang.String">
+            <column name="title" length="200" not-null="true">
+                <comment>图片的标题</comment>
+            </column>
+        </property>
+        <property name="description" type="java.lang.String">
+            <column name="description" length="20000">
+                <comment>对图片的介绍</comment>
+            </column>
+        </property>
+        <property name="content" type="java.lang.String">
+            <column name="content" not-null="true">
+                <comment>图片的二进制数据</comment>
+            </column>
+        </property>
+        <property name="path" type="java.lang.String">
+            <column name="path" length="1000">
+                <comment>图片的路径 备用</comment>
+            </column>
+        </property>
+        <property name="star" type="java.lang.Integer">
+            <column name="star" not-null="true">
+                <comment>图片的获赞的数量</comment>
+            </column>
+        </property>
+        <set name="comments" inverse="true">
+            <key>
+                <column name="picture_pictureId" />
+            </key>
+            <one-to-many class="Comment" />
+        </set>
+    </class>
+</hibernate-mapping>

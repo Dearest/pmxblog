@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>PMX博客 | 登录</title>
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width">
+    <#include "/include/link_css.ftl">
+    <#include "/include/link_js.ftl">
+
+</head>
+
+<body>
+
+  <header class="navbar navbar-fixed-top">
+  <section class="title">
+    <div class="container">
+      <div class="row-fluid">
+        <div class="span6">
+          <h1>登录</h1>
+        </div>
+        <div class="span6">
+          <ul class="breadcrumb pull-right">
+            <li><a href="/">博客首页</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+  </header>
+  <!-- / .title -->       
+
+
+  <section id="registration-page" class="container">
+    <form class="center" action="in" method="POST">
+      <fieldset class="registration-form">
+        <div class="control-group">
+          <!-- Username -->
+          <div class="controls">
+            <input type="text" id="username" name="name" placeholder="用户名" class="input-xlarge" required="required">
+          </div>
+        </div>
+
+        <div class="control-group">
+          <!-- Password-->
+          <div class="controls">
+            <input type="password" id="password" name="password" placeholder="密码" class="input-xlarge" required="required">
+          </div>
+        </div>
+
+        <div class="control-group">
+          <!-- Password -->
+          <div class="controls">
+            <input type="text" id="validateCode" name="validateCode" placeholder="请输入验证码" class="input-xlarge" required="required">
+          </div>
+
+          <div>
+            <img src="${rc.contextPath}/user/validateCode" alt="验证码" onclick="this.src='${rc.contextPath}/user/validateCode?'+Math.random()">
+          </div>
+
+        </div>
+        <div class="control-group">
+              <#if loginError??>
+              <span style="color: red">${loginError}</span>
+              </#if>
+        </div>
+
+        <div class="control-group">
+          <!-- Button -->
+          <div class="controls">
+            <button class="btn btn-success btn-large btn-block">登录</button>
+          </div>
+        </div>
+      </fieldset>
+    </form>
+  </section>
+  <!-- /#registration-page -->
+
+
+<!--Footer-->
+<footer id="footer">
+   <#include "/include/footer.ftl">
+</footer>
+
+
+</body>
+</html>

@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="com.iotu.pmx.model">
+    <class name="Comment" table="comment" catalog="blog">
+        <id name="commentId" type="java.lang.Integer">
+            <column name="commentId" />
+            <generator class="native" />
+        </id>
+        <many-to-one name="article" class="Article" fetch="select">
+            <column name="article_articleId" />
+        </many-to-one>
+        <many-to-one name="picture" class="Picture" fetch="select">
+            <column name="picture_pictureId" />
+        </many-to-one>
+        <property name="fromUser" type="java.lang.String">
+            <column name="fromUser" length="45" not-null="true" />
+        </property>
+        <property name="toUser" type="java.lang.String">
+            <column name="ToUser" length="45" not-null="true" />
+        </property>
+        <property name="content" type="java.lang.String">
+            <column name="content" length="45" not-null="true" />
+        </property>
+        <property name="time" type="java.sql.Timestamp">
+            <column name="time" length="19" not-null="true" />
+        </property>
+        <property name="isRecomment" type="java.lang.Integer">
+            <column name="isRecomment" not-null="true">
+                <comment>是否是对评论的回复 0 否 1是</comment>
+            </column>
+        </property>
+        <property name="recommentId" type="java.lang.Integer">
+            <column name="recommentId">
+                <comment>回复的评论的id</comment>
+            </column>
+        </property>
+    </class>
+</hibernate-mapping>
