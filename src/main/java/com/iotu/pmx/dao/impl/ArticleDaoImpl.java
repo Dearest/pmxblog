@@ -30,7 +30,7 @@ public class ArticleDaoImpl implements IArticleDao{
 			totalNumHql += " AND a.title LIKE '%" + searchParams.getSearchKey()+ "%' ";
 			hql += " AND a.title LIKE '%" + searchParams.getSearchKey()+ "%' ";
 		}
-		hql +=" ORDER By a.time";
+		hql +=" ORDER By a.time desc";
 		Query hqlquery = sessionFactory.getCurrentSession().createQuery(hql);
 		Query totalQuery = sessionFactory.getCurrentSession().createQuery(totalNumHql);
 
@@ -67,7 +67,7 @@ public class ArticleDaoImpl implements IArticleDao{
 	@SuppressWarnings("unchecked")
 	@Override
 	public List<Article> top5Articles() throws Exception {
-		String hql = "FROM Article a order by a.star ";
+		String hql = "FROM Article a order by a.star desc";
 		
 		return ( List<Article> )sessionFactory.getCurrentSession().createQuery(hql).setMaxResults(5).list();
 	}
