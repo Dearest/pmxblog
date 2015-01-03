@@ -41,6 +41,12 @@ public class ArticleServiceImpl implements IArticleService{
 		this.articleDao = articleDao;
 	}
 
+	@Override
+	public List<Article> top5Articles() throws Exception {
+		
+		return articleDao.top5Articles();
+	}
+
 
 
 }

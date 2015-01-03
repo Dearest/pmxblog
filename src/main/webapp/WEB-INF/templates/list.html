@@ -12,6 +12,7 @@
 
      <#include "/include/link_css.ftl">
     <#include "/include/link_js.ftl">
+    <script src="${rc.contextPath}/js/jquery.twbsPagination.min.js"></script>
 </head>
 
 <body>
@@ -20,21 +21,21 @@
     <section class="title">
         <div class="container">
             <div class="row-fluid">
-                <div class="span6">
-                    <h1>博客</h1>
+                <div class="span5">
+                    <h3>博客</h3>
                 </div>
-                <div class="span6">
+                <div class="span7">
                     <ul class="breadcrumb pull-right">
-                       <#if loginAdmin??>
+                       <#if loginUser??>
                         <li>
-                            欢迎你 ，${loginAdmin.name}<span class="divider">/</span>
+                            <h5>欢迎你 ，${loginUser.name}</h5>
                         </li>
                         <li class="login">
-                            <a  href="add">发布文章</a>
+                            <a  href="add"><h5>发布文章</h5></a>
                         </li>
                         <#else>
                         <li class="login">
-                            <a href="user/login">登录</a>
+                            <a href="user/login"><h5>登录</h5></a>
                         </li>
                         </#if>
                        
@@ -50,47 +51,32 @@
         <div class="row-fluid">
             <div class="span8">
                 <div class="blog">
+                <#if articles??>
+                <#list articles as a>
+                <#if a??>
                     <div class="blog-item well">
-                        <a href="#"><h2>Duis sed odio sit amet nibh vulputate cursus</h2></a>
+                        <a href="details?articleId=${a.articleId}"><h2>${a.title}</h2></a>
                         <div class="blog-meta clearfix">
                             <p class="pull-left">
-                              <i class="icon-user"></i> by <a href="#">John</a> | <i class="icon-folder-close"></i> Category <a href="#">Bootstrap</a> | <i class="icon-calendar"></i> Sept 16th, 2012
+                              <i class="icon-user"></i> by <a href="#">a.user.name</a> | <i class="icon-calendar"></i> ${a.time?date}
                           </p>
-                          <p class="pull-right"><i class="icon-comment pull"></i> <a href="blog-item.html#comments">3 Comments</a></p>
+                          <p class="pull-right"><i class="icon-comment pull"></i> <a href="blog-item.html#comments">${a.comments?size}条评论</a></p>
                       </div>
-                      <p><img src="images/sample/blog1.jpg" width="100%" alt="" /></p>
-                      <p>Proin gravida nibh vel velit auctor aliquet. Aenean sollicitudin, lorem quis bibendum auctor, nisi elit consequat ipsum, nec sagittis sem nibh id elit. Duis sed odio sit amet nibh vulputate cursus a sit amet mauris. Morbi accumsan ipsum velit. Nam nec tellus a odio tincidunt auctor a ornare odio. Sed non  mauris vitae erat consequat auctor eu in elit. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos.</p>
-                      <a class="btn btn-link" href="#">Read More <i class="icon-angle-right"></i></a>
+                      <p>${a.summary}</p>
+                      <a class="btn btn-link" href="details?articleId=${a.articleId}">查看全文 <i class="icon-angle-right"></i></a>
                   </div>
                   <!-- End Blog Item -->
+                  </#if>
+                  </#list>
+                  </#if>
 
-                  <div class="blog-item well">
-                    <a href="#"><h2>Duis sed odio sit amet nibh vulputate cursus a sit</h2></a>
-                    <div class="blog-meta clearfix">
-                        <p class="pull-left">
-                          <i class="icon-user"></i> by <a href="#">John</a> | <i class="icon-folder-close"></i> Category <a href="#">Bootstrap</a> | <i class="icon-calendar"></i> Sept 16th, 2012
-                      </p>
-                      <p class="pull-right"><i class="icon-comment pull"></i> <a href="blog-item.html#comments">3 Comments</a></p>
-                  </div>
-                  <p><img src="images/sample/blog1.jpg" width="100%" alt="" /></p>
-                  <p>Proin gravida nibh vel velit auctor aliquet. Aenean sollicitudin, lorem quis bibendum auctor, nisi elit consequat ipsum, nec sagittis sem nibh id elit. Duis sed odio sit amet nibh vulputate cursus a sit amet mauris. Morbi accumsan ipsum velit. Nam nec tellus a odio tincidunt auctor a ornare odio. Sed non  mauris vitae erat consequat auctor eu in elit. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos.</p>
-
-                  <a class="btn btn-link" href="#">Read More <i class="icon-angle-right"></i></a>
-              </div>
-              <!-- End Blog Item -->
 
               <div class="gap"></div>
 
               <!-- Paginationa -->
               <div class="pagination">
                 <ul>
-                    <li><a href="#"><i class="icon-angle-left"></i></a></li>
-                    <li class="active"><a href="#">1</a></li>
-                    <li><a href="#">2</a></li>
-                    <li><a href="#">3</a></li>
-                    <li><a href="#">4</a></li>
-                    <li><a href="#">5</a></li>
-                    <li><a href="#"><i class="icon-angle-right"></i></a></li>
+            
                 </ul>
             </div>
 
@@ -100,84 +86,39 @@
     <aside class="span4">
         <div class="widget search">
             <form>
-                <input type="text" class="input-block-level" placeholder="Search">
-                <button type="submit" class="btn btn-primary pull-right">Submit</button>
+                <input type="text" class="input-block-level" placeholder="搜索文章" id="searchTitle">
+                <button type="button" class="btn btn-primary pull-right">查找</button>
             </form>
         </div>
         <!-- /.search -->
         <!-- /.ads -->
 
         <div class="widget widget-popular">
-            <h3>Popular Posts</h3>
+            <h3>最受欢迎的文章</h3>
             <div class="widget-blog-items">
+            	<#if top5??>
+            	<#list top5 as t>
+            	<#if t??>
                 <div class="widget-blog-item media">
                     <div class="pull-left">
                         <div class="date">
-                            <span class="month">Jun</span>
-                            <span class="day">24</span>
+                            <span class="month">${t.time?date}</span>
+                           
                         </div>
                     </div>
                     <div class="media-body">
-                        <a href="#"><h5>Duis sed odio sit amet nibh vulputate cursus a sit amet mauris</h5></a>
+                        <a href="details?articleId=${t.articleId}"><h5>${t.title}</h5></a>
                     </div>
                 </div>
+                </#if>
+                 </#list>
+                  </#if>
 
-                <div class="widget-blog-item media">
-                    <div class="pull-left">
-                        <div class="date">
-                            <span class="month">Jun</span>
-                            <span class="day">24</span>
-                        </div>
-                    </div>
-                    <div class="media-body">
-                        <a href="#"><h5>Duis sed odio sit amet nibh vulputate cursus a sit amet mauris</h5></a>
-                    </div>
-                </div>
-
-                <div class="widget-blog-item media">
-                    <div class="pull-left">
-                        <div class="date">
-                            <span class="month">Jun</span>
-                            <span class="day">24</span>
-                        </div>
-                    </div>
-                    <div class="media-body">
-                        <a href="#"><h5>Duis sed odio sit amet nibh vulputate cursus a sit amet mauris</h5></a>
-                    </div>
-                </div>
+               
 
             </div>                        
         </div>
         <!-- End Popular Posts -->        
-
-        <div class="widget">
-            <h3>Blog Categories</h3>
-            <div>
-                <div class="row-fluid">
-                    <div class="span6">
-                        <ul class="unstyled">
-                            <li><a href="#">Development</a></li>
-                            <li><a href="#">Design</a></li>
-                            <li><a href="#">Updates</a></li>
-                            <li><a href="#">Tutorial</a></li>
-                            <li><a href="#">News</a></li>
-                        </ul>
-                    </div>
-
-                    <div class="span6">
-                        <ul class="unstyled">
-                            <li><a href="#">Joomla</a></li>
-                            <li><a href="#">Wordpress</a></li>
-                            <li><a href="#">Drupal</a></li>
-                            <li><a href="#">Magento</a></li>
-                            <li><a href="#">Bootstrap</a></li>
-                        </ul>
-                    </div>
-                </div>
-
-            </div>                       
-        </div>
-        <!-- End Category Widget -->
 
       
 
@@ -215,7 +156,22 @@
     </div>
     <!--/Modal Body-->
 </div>
-<!--  /Login form -->
+<script type="text/javascript">
+	$(function(){
+		var url = "${rc.contextPath}?page={{number}}";
+		<#if search.searchKey??>
+    	$("#searchTitle").val("${search.searchKey}");
+    	url += "&searchKey=${search.searchKey}";
+    	</#if>
+		$(".pagination").twbsPagination({
+    	totalPages: ${page.totalPageNum},
+    	visiblePages: ${page.totalPageNum},
+    	startPage: ${page.page},
+    	href: url
+    });
+	});
+	
+</script>
 
 </body>
 </html>

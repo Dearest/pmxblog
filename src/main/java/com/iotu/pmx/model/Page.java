@@ -27,7 +27,7 @@ public class Page implements java.io.Serializable{
 	/**
 	 * 单位页面显示数据量
 	 */
-	private int depPageNum = SystemConstant.DEP_PAGE_NUM;
+	private int picPageNum = SystemConstant.DEP_PAGE_NUM;
 
 	/**
 	 * 总页数
@@ -37,11 +37,11 @@ public class Page implements java.io.Serializable{
 	/**
 	 * 当前页数
 	 */
-	private long currentPageNum = 1;
+	private long page = 1;
 	
 	//构造方法
-	public Page(Long currentPageNum){
-		this.currentPageNum = currentPageNum;
+	public Page(Long page){
+		this.page = page;
 	}
 	
 	//设置当前页数的构造方法
@@ -65,13 +65,6 @@ public class Page implements java.io.Serializable{
 		this.totalPageNum = totalPageNum;
 	}
 
-	public long getCurrentPageNum() {
-		return currentPageNum;
-	}
-
-	public void setCurrentPageNum(long currentPageNum) {
-		this.currentPageNum = currentPageNum;
-	}
 
 	public int getPerPageNum() {
 		return perPageNum;
@@ -81,12 +74,21 @@ public class Page implements java.io.Serializable{
 		this.perPageNum = perPageNum;
 	}
 
-	public int getDepPageNum() {
-		return depPageNum;
+
+	public long getPage() {
+		return page;
 	}
 
-	public void setDepPageNum(int depPageNum) {
-		this.depPageNum = depPageNum;
+	public void setPage(long page) {
+		this.page = page;
+	}
+
+	public int getPicPageNum() {
+		return picPageNum;
+	}
+
+	public void setPicPageNum(int picPageNum) {
+		this.picPageNum = picPageNum;
 	}
 
 }

@@ -12,7 +12,7 @@
 
     <#include "/include/link_css.ftl">
     <#include "/include/link_js.ftl">
-    
+    <script src="${rc.contextPath}/js/details.js"></script>
 </head>
 
 <body>
@@ -21,11 +21,23 @@
         <div class="container">
             <div class="row-fluid">
                 <div class="span6">
-                    <h1>博客</h1>
+                    <h3>博客</h3>
                 </div>
-                <div class="span6">
+                 <div class="span6">
                     <ul class="breadcrumb pull-right">
-                        
+                       <#if loginUser??>
+                        <li>
+                            <h5>欢迎你 ，${loginUser.name}</h5>
+                        </li>
+                        <li class="login">
+                            <a href="add"><h5>发布文章</h5></a>
+                        </li>
+                        <#else>
+                        <li class="login">
+                            <a href="user/login"><h5>登录</h5></a>
+                        </li>
+                        </#if>
+                       
                     </ul>
                 </div>
             </div>
@@ -38,71 +50,84 @@
         <div class="row-fluid">
             <div class="span8">
                 <div class="blog">
+                    <#if article??>
                     <div class="blog-item well">
-                        <a href="#"><h2>Duis sed odio sit amet nibh vulputate cursus</h2></a>
+                        <a href="#"><h2>${article.title}</h2></a>
                         <div class="blog-meta clearfix">
                             <p class="pull-left">
-                              <i class="icon-user"></i> by <a href="#">John</a> | <i class="icon-folder-close"></i> Category <a href="#">Bootstrap</a> | <i class="icon-calendar"></i> Sept 16th, 2012
+                              <i class="icon-user"></i> by <a href="#">${article.user.name}</a> | <i class="icon-calendar"></i> ${article.time?date}|<i class="icon-heart"></i><a href="#" title="喜欢"><span id="star">${article.star}</span></a>
+
                           </p>
-                          <p class="pull-right"><i class="icon-comment pull"></i> <a href="#comments">3 Comments</a></p>
+
+                          <p class="pull-right"><i class="icon-comment pull"></i> <a href="#comments">${article.comments?size} 条评论</a></p>
                       </div>
-                      <p><img src="images/sample/blog1.jpg" width="100%" alt="" /></p>
-                      <p>Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of "de Finibus Bonorum et Malorum" (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum, "Lorem ipsum dolor sit amet..", comes from a line in section 1.10.32.</p>
+                     
+                      <p>${article.content}</p>
+        
+        
+                        <input type="text"  id="articleId"  value="${article.articleId}" style='Visibility:hidden'>
+                          <input type="text"  id="toUser"  value="${article.user.name}" style='Visibility:hidden'>
 
-                      <p>Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word </p>
+                    <div class="btn-group" >
+                    <button type="button" class="btn btn-success btn-large btn-block" onclick="star()" id="likebtn">&nbsp;&nbsp;<i class="icon-heart"></i>&nbsp;&nbsp;喜欢&nbsp;&nbsp;</button>
 
-                      <div class="tag">
-                        Tags : <a href="#"><span class="label label-success">CSS3</span></a> 
-                        <a href="#"><span class="label label-success">HTML5</span></a> 
-                        <a href="#"><span class="label label-success">Bootstrap</span></a> 
-                        <a href="#"><span class="label label-success">WordPress</span></a>
-                    </div>                       
-
-                    <div class="user-info media box">
-                        <div class="pull-left">
-                            <img src="images/sample/avatar.jpg" alt="" />
-                        </div>
-                        <div class="media-body">
-                            <h5 style="margin-top: 0">John Doe</h5>
-                            <p>There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything.</p>
-                            <div class="author-meta">
-                                <a class="btn btn-social btn-facebook" href="#"><i class="icon-facebook"></i></a> <a class="btn btn-social btn-google-plus" href="#"><i class="icon-google-plus"></i></a> <a class="btn btn-social btn-twitter" href="#"><i class="icon-twitter"></i></a> <a class="btn btn-social btn-linkedin" href="#"><i class="icon-linkedin"></i></a>
-                            </div>
-                        </div>
                     </div>
-
-                    <p>&nbsp;</p>
-                    
+                    <p>&nbsp;<hr></p>
+                   
+                  
+                               
+                           
                     <div id="comments" class="comments">
 
-                        <h4>3 Comments</h4>
+                        <h4>${article.comments?size} 条评论</h4>
                         <div class="comments-list">
+                            <#list article.comments?sort_by("time")?reverse as c>
+                            <#if c.isRecomment == 0>
+                             <div class="comment media">
+                                <div class="pull-left">
+                                    <img class="avatar" src="${rc.contextPath}/images/sample/cAvatar1.jpg" alt="" />  
+                                </div>
+                                <div class="media-body">
+                                    <strong>来自  <a href="#" id="commentauthor${c.commentId}">${c.fromUser}</a></strong><br>
+                                    <small>${c.time?datetime}</small><br>
+                                    <p>@<a>${c.toUser}</a> &nbsp;&nbsp;${c.content}</p>
+                                     <input type="text"  id="commentId"  value="{c.commentId}" style='Visibility:hidden'>
+                                   
+                                        <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapse${c.commentId}" aria-expanded="false" aria-controls="collapseTwo"><i class="glyphicon glyphicon-share-alt"></i> 回复</a>
+                                   
+                                    <div id="collapse${c.commentId}" class="panel-collapse collapse " role="tabpanel" aria-labelledby="headingOne">
+                                        <div class="panel-body">
+                                        <input type="text" id="recommentInput${c.commentId}" class="form-control" value="" required="required"   placeholder="请输入回复...">
+                                        
+                                        <button type="button" class="btn btn-sm btn-primary pull-right" style="margin-top: 4px" onclick="recomment(${c.commentId})">提交</button>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+
+
+                            <#else>
                             <div class="comment media">
                                 <div class="pull-left">
-                                    <img class="avatar" src="images/sample/cAvatar1.jpg" alt="" />  
+                                    <img class="avatar" src="${rc.contextPath}/images/sample/cAvatar1.jpg" alt="" />  
                                 </div>
 
                                 <div class="media-body">
-                                    <strong>Posted by <a href="#">Krikor</a></strong><br>
-                                    <small>Thursday, 01 March 2012 15:26</small><br>
-                                    <p>There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. If you are going to use a passage</p>
+                                    <strong>来自  <a href="#">${c.fromUser}</a></strong><br>
+                                    <small>${c.time?datetime}</small><br>
+                                    <p>@<a>${c.toUser}</a> &nbsp;&nbsp;${c.content}</p>
+                                     <input type="text"  id="commentId"  value="{c.commentId}" style='Visibility:hidden'>
+                                   
+
                                 </div>
+
                             </div>
-
-                            <div class="comment media">
-                                <div class="pull-left">
-                                    <img class="avatar" src="images/sample/cAvatar2.jpg" alt="" />     
-                                </div>
-
-                                <div class="media-body">
-                                    <strong>Posted by <a href="#">Krikor</a></strong><br>
-                                    <small>Thursday, 01 March 2012 15:26</small><br>
-                                    <p>There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. If you are going to use a passage</p>
-                                </div>
-                            </div>
-
+                            </#if>
+                            </#list>
+                            
                         </div>
-
+                        </#if>
                         <!-- Start Comment Form -->
                         <div class="comment-form">
                             <h4>发布评论</h4>
@@ -110,11 +135,11 @@
                             <form name="comment-form" id="comment-form">
                                 <div class="row-fluid">
                                     <div class="span4">
-                                        <input type="text" name="name" required="required" class="input-block-level" placeholder="昵称" />
+                                        <input type="text"  required="required" class="input-block-level" placeholder="昵称" id="fromUser" />
                                     </div>
                                 </div>
-                                <textarea rows="10" name="message" id="message" required="required" class="input-block-level" placeholder="说点什么吧..."></textarea>
-                                <input type="submit" value="评论" class="btn btn-large btn-primary" />
+                                <textarea rows="10"  id="content" required="required" class="input-block-level" placeholder="说点什么吧..."></textarea>
+                                <button type="button" class="btn btn-large btn-primary" onclick="comment()">评论</button>
                             </form>
                         </div>
                         <!-- End Comment Form -->
@@ -127,53 +152,35 @@
             </div>
         </div>
         <aside class="span4">
-            <div class="widget search">
-                <form>
-                    <input type="text" class="input-block-level" placeholder="Search">
-                     <button type="submit" class="btn btn-primary pull-right">Submit</button>
-                </form>
-            </div>
+            
             <!-- /.search -->
 
 
             <div class="widget widget-popular">
                 <h3>最受欢迎的文章</h3>
                 <div class="widget-blog-items">
+                    <#if top5 ??>
+                    <#list top5 as t>
+                    <#if t??>
                     <div class="widget-blog-item media">
                         <div class="pull-left">
                             <div class="date">
-                                <span class="month">Jun</span>
-                                <span class="day">24</span>
+                                <span class="month">${t.time?date}</span>
+                                
                             </div>
                         </div>
                         <div class="media-body">
-                            <a href="#"><h5>Duis sed odio sit amet nibh vulputate cursus a sit amet mauris</h5></a>
+                            <a href="details?articleId=${t.articleId}"><h5>${t.title}</h5></a>
                         </div>
                     </div>
+                    </#if>
+                    </#list>
+                    </#if>
 
-                    <div class="widget-blog-item media">
-                        <div class="pull-left">
-                            <div class="date">
-                                <span class="month">Jun</span>
-                                <span class="day">24</span>
-                            </div>
-                        </div>
-                        <div class="media-body">
-                            <a href="#"><h5>Duis sed odio sit amet nibh vulputate cursus a sit amet mauris</h5></a>
-                        </div>
-                    </div>
 
-                    <div class="widget-blog-item media">
-                        <div class="pull-left">
-                            <div class="date">
-                                <span class="month">Jun</span>
-                                <span class="day">24</span>
-                            </div>
-                        </div>
-                        <div class="media-body">
-                            <a href="#"><h5>Duis sed odio sit amet nibh vulputate cursus a sit amet mauris</h5></a>
-                        </div>
-                    </div>
+                   
+
+                    
 
                 </div>                        
             </div>

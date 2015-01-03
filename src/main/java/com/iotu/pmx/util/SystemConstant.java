@@ -43,7 +43,7 @@ public class SystemConstant {
 	/**
 	 * 每页显示数据量定义 10
 	 */
-	public static final int PER_PAGE_NUM = 10;
+	public static final int PER_PAGE_NUM = 6;
 
 	/**
 	 * 单位页面数据量定义 5

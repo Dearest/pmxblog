@@ -25,4 +25,12 @@
 	<bean id="commentService" class="com.iotu.pmx.service.impl.CommentServiceImpl">
 		<property name="commentDao" ref="commentDao"></property>
 	</bean>
+	
+	
+	<bean id="pictureDao" class="com.iotu.pmx.dao.impl.PictureDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	<bean id="pictureService" class="com.iotu.pmx.service.impl.PictureServiceImpl">
+		<property name="pictureDao" ref="pictureDao"></property>
+	</bean>
 </beans>

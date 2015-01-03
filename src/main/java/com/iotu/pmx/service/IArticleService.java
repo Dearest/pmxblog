@@ -48,4 +48,10 @@ public interface IArticleService {
 	 * @throws Exception
 	 */
 	public Article starArticle(Article article) throws Exception;
+	
+	/**最受欢迎的5篇文章
+	 * @return
+	 * @throws Exception
+	 */
+	public List<Article> top5Articles() throws Exception;
 }

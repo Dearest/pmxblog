@@ -39,7 +39,7 @@ public class PageTools {
 	 * @throws Exception
 	 */
 	public static int countLimitStart(Page page) throws Exception {
-		Long start = (page.getCurrentPageNum() - 1) * page.getPerPageNum();
+		Long start = (page.getPage() - 1) * page.getPerPageNum();
 		if (start < 0) {
 			start = (long) 0;
 		}
@@ -51,12 +51,12 @@ public class PageTools {
 	 * @param page
 	 * @throws Exception
 	 */
-	public static void countTotalPageNumWithDep(Page page) throws Exception{
+	public static void countTotalPageNumForPic(Page page) throws Exception{
 		long totalPageNum = 1;
-		if (page.getTotalDataNum() % page.getDepPageNum() > 0) {
-			totalPageNum = page.getTotalDataNum() / page.getDepPageNum() + 1;
+		if (page.getTotalDataNum() % page.getPicPageNum() > 0) {
+			totalPageNum = page.getTotalDataNum() / page.getPicPageNum() + 1;
 		} else {
-			totalPageNum = page.getTotalDataNum() / page.getDepPageNum();
+			totalPageNum = page.getTotalDataNum() / page.getPicPageNum();
 		}
 		if (totalPageNum == 0) {
 			totalPageNum = 1;
@@ -70,8 +70,8 @@ public class PageTools {
 	 * @return
 	 * @throws Exception
 	 */
-	public static int countLimitStartWithDep(Page page) throws Exception{
-		Long start = (page.getCurrentPageNum() - 1) * page.getDepPageNum();
+	public static int countLimitStartForPic(Page page) throws Exception{
+		Long start = (page.getPage() - 1) * page.getPicPageNum();
 		if (start < 0) {
 			start = (long) 0;
 		}

@@ -51,8 +51,8 @@ public class UserController {
 	}
 	User queryUser = userService.login(user);
 	if (queryUser != null &&queryUser.getUserId() != 0 ) {
-		request.getSession().setAttribute(SystemConstant.LOGIN_ADMIN, queryUser);
-		return "list";
+		request.getSession().setAttribute(SystemConstant.LOGIN_USER, queryUser);
+		return "redirect:/";
 	} else {
 		modelMap.addAttribute(SystemConstant.LOGINERROR, "用户名或密码错误");
 		return "login";

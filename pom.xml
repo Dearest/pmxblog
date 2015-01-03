@@ -314,7 +314,7 @@
 		</dependency>
   </dependencies>
   <build>
-     <finalName>pmxBlog</finalName>
+     <finalName>pmxblog</finalName>
     <resources>
 			<resource>
 				<directory>src/main/resources</directory>
@@ -331,7 +331,7 @@
 				<version>2.2</version>
 				<configuration>
 					<port>8080</port>
-					<path>/pmxBlog</path>
+					<path>/pmxblog</path>
 					<uriEncoding>UTF-8</uriEncoding>
 					<server>tomcat7</server>
 				</configuration>

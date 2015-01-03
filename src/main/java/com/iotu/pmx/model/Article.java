@@ -9,6 +9,7 @@ import java.util.Set;
  * Article entity. @author MyEclipse Persistence Tools
  */
 
+@SuppressWarnings("serial")
 public class Article implements java.io.Serializable {
 
 	// Fields
@@ -20,7 +21,7 @@ public class Article implements java.io.Serializable {
 	private String summary;
 	private Date time;
 	private Integer star;
-	private Set comments = new HashSet(0);
+	private Set<Comment> comments = new HashSet<Comment>(0);
 
 	// Constructors
 
@@ -41,7 +42,7 @@ public class Article implements java.io.Serializable {
 
 	/** full constructor */
 	public Article(User user, String title, String content, String summary,
-			Timestamp time, Integer star, Set comments) {
+			Timestamp time, Integer star, Set<Comment> comments) {
 		this.user = user;
 		this.title = title;
 		this.content = content;

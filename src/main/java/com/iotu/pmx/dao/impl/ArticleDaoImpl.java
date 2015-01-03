@@ -64,6 +64,14 @@ public class ArticleDaoImpl implements IArticleDao{
 		return queryArticle;
 	}
 
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<Article> top5Articles() throws Exception {
+		String hql = "FROM Article a order by a.star ";
+		
+		return ( List<Article> )sessionFactory.getCurrentSession().createQuery(hql).setMaxResults(5).list();
+	}
+
 
 	
 

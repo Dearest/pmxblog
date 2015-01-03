@@ -21,13 +21,25 @@
     <div class="container">
       <div class="row-fluid">
         <div class="span6">
-          <h1>登录</h1>
+          <h3>登录</h3>
         </div>
-        <div class="span6">
-          <ul class="breadcrumb pull-right">
-            <li><a href="/">博客首页</a></li>
-          </ul>
-        </div>
+         <div class="span6">
+                    <ul class="breadcrumb pull-right">
+                       <#if loginAdmin??>
+                        <li>
+                            <h5>欢迎你 ，${loginAdmin.name}</h5><span class="divider">/</span>
+                        </li>
+                        <li class="login">
+                            <a  href="add"><h5>发布文章</h5></a>
+                        </li>
+                        <#else>
+                        <li class="login">
+                            <a href="../"><h5>首页</h5></a>
+                        </li>
+                        </#if>
+                       
+                    </ul>
+                </div>
       </div>
     </div>
   </section>
@@ -80,6 +92,7 @@
   </section>
   <!-- /#registration-page -->
 
+  <p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p>
 
 <!--Footer-->
 <footer id="footer">

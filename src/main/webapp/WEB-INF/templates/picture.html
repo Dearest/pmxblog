@@ -9,14 +9,8 @@
     <title>PMX博客 | 照片</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width">
-
-    <link rel="stylesheet" href="css/bootstrap.min.css">
-    <link rel="stylesheet" href="css/bootstrap-responsive.min.css">
-    <link rel="stylesheet" href="css/font-awesome.min.css">
-    <link rel="stylesheet" href="css/main.css">
-    <link rel="stylesheet" href="css/sl-slide.css">
-
-    <script src="js/vendor/modernizr-2.6.2-respond-1.1.0.min.js"></script>
+      <#include "/include/link_css.ftl">
+    <#include "/include/link_js.ftl">
 </head>
 
 <body>
@@ -26,11 +20,23 @@
         <div class="container">
             <div class="row-fluid">
                 <div class="span6">
-                    <h1>图片墙</h1>
+                    <h3>图片墙</h3>
                 </div>
-                <div class="span6">
+               <div class="span7">
                     <ul class="breadcrumb pull-right">
-                        <li><a href="index.html">博客首页</a></li>
+                       <#if loginUser??>
+                        <li>
+                            <h5>欢迎你 ，${loginUser.name}</h5>
+                        </li>
+                        <li class="login">
+                            <a  href="add"><h5>发布文章</h5></a>
+                        </li>
+                        <#else>
+                        <li class="login">
+                            <a href="user/login"><h5>登录</h5></a>
+                        </li>
+                        </#if>
+                       
                     </ul>
                 </div>
             </div>
@@ -325,44 +331,12 @@
 
 <!--Footer-->
 <footer id="footer">
-    <div class="container">
-        <div class="row-fluid">
-            <div class="span5 cp">
-                &copy; 2013 <a target="_blank" href="http://shapebootstrap.net/" title="Free Twitter Bootstrap WordPress Themes and HTML templates">ShapeBootstrap</a>. All Rights Reserved.
-            </div>
-            <!--/Copyright-->
-
-            <div class="span6">
-                <ul class="social pull-right">
-                    <li><a href="#"><i class="icon-facebook"></i></a></li>
-                    <li><a href="#"><i class="icon-twitter"></i></a></li>
-                    <li><a href="#"><i class="icon-pinterest"></i></a></li>
-                    <li><a href="#"><i class="icon-linkedin"></i></a></li>
-                    <li><a href="#"><i class="icon-google-plus"></i></a></li>                       
-                    <li><a href="#"><i class="icon-youtube"></i></a></li>
-                    <li><a href="#"><i class="icon-tumblr"></i></a></li>                        
-                    <li><a href="#"><i class="icon-dribbble"></i></a></li>
-                    <li><a href="#"><i class="icon-rss"></i></a></li>
-                    <li><a href="#"><i class="icon-github-alt"></i></a></li>
-                    <li><a href="#"><i class="icon-instagram"></i></a></li>                   
-                </ul>
-            </div>
-
-            <div class="span1">
-                <a id="gototop" class="gototop pull-right" href="#"><i class="icon-angle-up"></i></a>
-            </div>
-            <!--/Goto Top-->
-        </div>
-    </div>
+    <#include "/include/footer.ftl">
 </footer>
 <!--/Footer-->
 
 </div>
-<!--  /Login form -->
 
-<script src="js/vendor/jquery-1.9.1.min.js"></script>
-<script src="js/vendor/bootstrap.min.js"></script>
-<script src="js/main.js"></script>
 
 </body>
 </html>

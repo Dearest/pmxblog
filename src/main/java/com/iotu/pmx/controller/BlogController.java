@@ -3,8 +3,10 @@ package com.iotu.pmx.controller;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.Date;
+import java.util.List;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
@@ -15,6 +17,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import com.alibaba.fastjson.JSONObject;
 import com.iotu.pmx.model.Article;
 import com.iotu.pmx.model.Comment;
+import com.iotu.pmx.model.Page;
+import com.iotu.pmx.model.SearchParams;
 import com.iotu.pmx.model.User;
 import com.iotu.pmx.service.IArticleService;
 import com.iotu.pmx.service.ICommentService;
@@ -29,7 +33,13 @@ public class BlogController {
 	private ICommentService commentService;
 	
 	@RequestMapping("/")
-	public String mainPage(){
+	public String mainPage(ModelMap modelMap,Page page,SearchParams searchParams) throws Exception{
+		List<Article> articles = articleService.getArticles(page, searchParams);
+		List<Article> top5 = articleService.top5Articles();
+		modelMap.addAttribute("articles", articles);
+		modelMap.addAttribute("top5", top5);
+		modelMap.addAttribute("page", page);
+		modelMap.addAttribute("search", searchParams);
 		return "list";
 	}
 	
@@ -42,18 +52,42 @@ public class BlogController {
 	 * @throws Exception
 	 */
 	@RequestMapping("/comment")
-	public void comment(Comment comment,HttpServletResponse response,PrintWriter printWriter,String articleId) throws Exception{
+	public void comment(Comment comment,HttpServletResponse response,PrintWriter printWriter,String articleId,HttpSession session,HttpServletRequest request) throws Exception{
 		JSONObject result = new JSONObject();
-		System.out.println("contentId"+articleId);
-		comment.setTime(new Date());
-		comment.setArticle(new Article(Integer.parseInt(articleId)));
-		if (commentService.saveComment(comment).getCommentId() > 0) {
-			result.put("code", "100");
-			result.put("result", "评论发表成功");
-		}else{
-			result.put("code", "141");
-			result.put("result", "评论发表失败");
+		//如果是对评论的回复 就执行if里面的语句 先判断是否登录 再赋值fromUser
+		if (comment.getIsRecomment() == 1 ) {
+			User user = (User) session.getAttribute(SystemConstant.LOGIN_USER);
+			
+			if (user == null) {
+				result.put("code", "142");
+				result.put("result", "您还没有登录");
+			}else {   
+				//当user不为null 即已经登录
+				comment.setFromUser(user.getName());
+				comment.setTime(new Date());
+				comment.setArticle(new Article(Integer.parseInt(articleId)));
+				if (commentService.saveComment(comment).getCommentId() > 0) {
+					result.put("code", "100");
+					result.put("result", "评论发表成功");
+				}else{
+					result.put("code", "141");
+					result.put("result", "评论发表失败");
+				}
+			}
+			
+		}else {
+			comment.setTime(new Date());
+			comment.setArticle(new Article(Integer.parseInt(articleId)));
+			if (commentService.saveComment(comment).getCommentId() > 0) {
+				result.put("code", "100");
+				result.put("result", "评论发表成功");
+			}else{
+				result.put("code", "141");
+				result.put("result", "评论发表失败");
+			}
 		}
+		
+		
 		out(result,response);
 	}
 	
@@ -68,8 +102,9 @@ public class BlogController {
 	@RequestMapping("/details")
 	public String details(Article article,ModelMap modelMap) throws Exception{
 		article = articleService.findArticleById(article);
+		List<Article> top5 = articleService.top5Articles();
 		modelMap.addAttribute("article", article);
-		
+		modelMap.addAttribute("top5", top5);
 		return "details";
 	}
 	
@@ -97,7 +132,7 @@ public class BlogController {
 	public String add(HttpSession session) throws Exception{
 		User user = (User) session.getAttribute(SystemConstant.LOGIN_USER);
 		if (user == null) {
-			return "redirect:/user/login";
+			return "add";
 		}
 		
 		return "add";
@@ -109,13 +144,14 @@ public class BlogController {
 		User user = (User) session.getAttribute(SystemConstant.LOGIN_USER);
 		
 		if (user == null) {
-			return "redirect:/user/login";
+			return "add";
 		}
+		article.setStar(1);
 		article.setTime(new Date());
 		article.setUser(user);
 		articleService.saveArticle(article);
 		
-		return "redirect:/blog";
+		return "redirect:/";
 	}
 
 	/**重构的带代码  输出json字符串
@@ -131,6 +167,7 @@ public class BlogController {
 		out.flush();
 		out.close();
 	}
+	
 }
 
 
