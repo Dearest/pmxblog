@@ -7264,3 +7264,75 @@ Looking for @ControllerAdvice: WebApplicationContext for namespace 'springDispat
 Looking for @ControllerAdvice: WebApplicationContext for namespace 'springDispatcher-servlet': startup date [Sat Jan 03 17:58:54 CST 2015]; parent: Root WebApplicationContext
 ClassTemplateLoader for Spring macros added to FreeMarker configuration
 FrameworkServlet 'springDispatcher': initialization completed in 540 ms
+Root WebApplicationContext: initialization started
+Refreshing Root WebApplicationContext: startup date [Sat Jan 03 18:29:45 CST 2015]; root of context hierarchy
+Loading XML bean definitions from URL [file:/E:/ZhouJiaChen/GIT/pmxblog/target/classes/config/springmvc-bean.xml]
+Loading XML bean definitions from URL [file:/E:/ZhouJiaChen/GIT/pmxblog/target/classes/config/springmvc-hibernate.xml]
+{dataSource-1} inited
+HCANN000001: Hibernate Commons Annotations {4.0.4.Final}
+HHH000412: Hibernate Core {4.3.5.Final}
+HHH000206: hibernate.properties not found
+HHH000021: Bytecode provider name : javassist
+HHH000400: Using dialect: org.hibernate.dialect.MySQLDialect
+HHH000399: Using default transaction strategy (direct JDBC transactions)
+HHH000397: Using ASTQueryTranslatorFactory
+HHH000229: Running schema validator
+HHH000102: Fetching database metadata
+HHH000261: Table found: blog.article
+HHH000037: Columns: [summary, content, time, title, articleid, user_userid, star]
+HHH000261: Table found: blog.comment
+HHH000037: Columns: [content, commentid, time, article_articleid, fromuser, isrecomment, recommentid, picture_pictureid, touser]
+HHH000261: Table found: blog.picture
+HHH000037: Columns: [content, title, pictureid, user_userid, description, star, path]
+HHH000261: Table found: blog.user
+HHH000037: Columns: [name, userid, role, password, salt]
+Using DataSource [{
+	CreateTime:"2015-01-03 18:29:46",
+	ActiveCount:0,
+	PoolingCount:1,
+	CreateCount:1,
+	DestroyCount:0,
+	CloseCount:2,
+	ConnectCount:2,
+	Connections:[
+		{ID:189182419, ConnectTime:"2015-01-03 18:29:46", UseCount:2, LastActiveTime:"2015-01-03 18:29:47"}
+	]
+}
+
+[
+	{
+	ID:189182419, 
+	poolStatements:[
+		]
+	}
+]] of Hibernate SessionFactory for HibernateTransactionManager
+Root WebApplicationContext: initialization completed in 1563 ms
+FrameworkServlet 'springDispatcher': initialization started
+Refreshing WebApplicationContext for namespace 'springDispatcher-servlet': startup date [Sat Jan 03 18:29:47 CST 2015]; parent: Root WebApplicationContext
+Loading XML bean definitions from URL [file:/E:/ZhouJiaChen/GIT/pmxblog/target/classes/config/springmvc-config.xml]
+JSR-330 'javax.inject.Inject' annotation found and supported for autowiring
+Mapped URL path [/js/**] onto handler 'org.springframework.web.servlet.resource.ResourceHttpRequestHandler#0'
+Mapped URL path [/css/**] onto handler 'org.springframework.web.servlet.resource.ResourceHttpRequestHandler#1'
+Mapped URL path [/images/**] onto handler 'org.springframework.web.servlet.resource.ResourceHttpRequestHandler#2'
+Mapped URL path [/font/**] onto handler 'org.springframework.web.servlet.resource.ResourceHttpRequestHandler#3'
+Mapped URL path [/fonts/**] onto handler 'org.springframework.web.servlet.resource.ResourceHttpRequestHandler#4'
+Mapped URL path [/picture/**] onto handler 'org.springframework.web.servlet.resource.ResourceHttpRequestHandler#5'
+Mapped URL path [/video/**] onto handler 'org.springframework.web.servlet.resource.ResourceHttpRequestHandler#6'
+Mapped URL path [/ueditor/**] onto handler 'org.springframework.web.servlet.resource.ResourceHttpRequestHandler#7'
+Mapped URL path [/news/**] onto handler 'org.springframework.web.servlet.resource.ResourceHttpRequestHandler#8'
+Mapped URL path [/image/**] onto handler 'org.springframework.web.servlet.resource.ResourceHttpRequestHandler#9'
+Mapped "{[/add],methods=[],params=[],headers=[],consumes=[],produces=[],custom=[]}" onto public java.lang.String com.iotu.pmx.controller.BlogController.add(javax.servlet.http.HttpSession) throws java.lang.Exception
+Mapped "{[/save],methods=[],params=[],headers=[],consumes=[],produces=[],custom=[]}" onto public java.lang.String com.iotu.pmx.controller.BlogController.save(com.iotu.pmx.model.Article,javax.servlet.http.HttpSession) throws java.lang.Exception
+Mapped "{[/comment],methods=[],params=[],headers=[],consumes=[],produces=[],custom=[]}" onto public void com.iotu.pmx.controller.BlogController.comment(com.iotu.pmx.model.Comment,javax.servlet.http.HttpServletResponse,java.io.PrintWriter,java.lang.String,javax.servlet.http.HttpSession,javax.servlet.http.HttpServletRequest) throws java.lang.Exception
+Mapped "{[/details],methods=[],params=[],headers=[],consumes=[],produces=[],custom=[]}" onto public java.lang.String com.iotu.pmx.controller.BlogController.details(com.iotu.pmx.model.Article,org.springframework.ui.ModelMap) throws java.lang.Exception
+Mapped "{[/],methods=[],params=[],headers=[],consumes=[],produces=[],custom=[]}" onto public java.lang.String com.iotu.pmx.controller.BlogController.mainPage(org.springframework.ui.ModelMap,com.iotu.pmx.model.Page,com.iotu.pmx.model.SearchParams) throws java.lang.Exception
+Mapped "{[/star],methods=[],params=[],headers=[],consumes=[],produces=[],custom=[]}" onto public void com.iotu.pmx.controller.BlogController.star(com.iotu.pmx.model.Article,javax.servlet.http.HttpServletResponse) throws java.lang.Exception
+Mapped "{[/photo/list],methods=[],params=[],headers=[],consumes=[],produces=[],custom=[]}" onto public java.lang.String com.iotu.pmx.controller.PictureController.list(org.springframework.ui.ModelMap,com.iotu.pmx.model.Page) throws java.lang.Exception
+Mapped "{[/photo/save],methods=[],params=[],headers=[],consumes=[],produces=[],custom=[]}" onto public java.lang.String com.iotu.pmx.controller.PictureController.save(javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpSession) throws java.lang.Exception
+Mapped "{[/user/login],methods=[],params=[],headers=[],consumes=[],produces=[],custom=[]}" onto public java.lang.String com.iotu.pmx.controller.UserController.show()
+Mapped "{[/user/in],methods=[],params=[],headers=[],consumes=[],produces=[],custom=[]}" onto public java.lang.String com.iotu.pmx.controller.UserController.login(com.iotu.pmx.model.User,org.springframework.ui.ModelMap,javax.servlet.http.HttpServletRequest,java.lang.String) throws java.lang.Exception
+Mapped "{[/user/validateCode],methods=[],params=[],headers=[],consumes=[],produces=[],custom=[]}" onto public void com.iotu.pmx.controller.UserController.showValidateCode(javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse) throws java.io.IOException
+Looking for @ControllerAdvice: WebApplicationContext for namespace 'springDispatcher-servlet': startup date [Sat Jan 03 18:29:47 CST 2015]; parent: Root WebApplicationContext
+Looking for @ControllerAdvice: WebApplicationContext for namespace 'springDispatcher-servlet': startup date [Sat Jan 03 18:29:47 CST 2015]; parent: Root WebApplicationContext
+ClassTemplateLoader for Spring macros added to FreeMarker configuration
+FrameworkServlet 'springDispatcher': initialization completed in 581 ms

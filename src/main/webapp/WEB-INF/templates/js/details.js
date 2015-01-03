@@ -21,7 +21,6 @@ function comment(){
 function recomment(commentId){
 	var articleId = $("#articleId").val();
 	var toUser = $("#commentauthor"+commentId).html();
-	
 	var content = $("#recommentInput"+commentId).val();
 	var isRecomment = 1; 
 	var recommentId = commentId;
@@ -34,17 +33,26 @@ function recomment(commentId){
 		recommentId:recommentId
 		},
 		function (date){
+			var flag = false;
 			$.each(date,function(k,v){
-				if(k == "100"){
-					location.href="details?articleId="+articleId;
-				}else{
-					$.scojs_message(v, $.scojs_message.TYPE_ERROR);
+				if(k == "code"){
+					if(v == "100"){
+						flag = true;
+					}
+				}
+				if( k == "result"){
+					if(flag){
+						location.href="details?articleId="+articleId;	
+					}else{
+						$.scojs_message(v, $.scojs_message.TYPE_ERROR);
+					}
 				}
 			});
 			
 		}
 	); 
 }
+
 
 function star(){
 
